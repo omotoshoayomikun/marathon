@@ -1,0 +1,7 @@
+.main_container {
+    width: inherit;
+    /* margin-left: 220px; */
+    position: relative;
+    margin-top: 90px;
+    padding: 30px;
+}

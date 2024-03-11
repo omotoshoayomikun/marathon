@@ -1,0 +1,36 @@
+.user-input-wrp {
+    position: relative;
+    /* margin: 15px 0; */
+    border: 1px solid #79747e;
+    border-radius: 4px;
+}
+
+
+.user-input-wrp .floating-label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 15px;
+    left: 10px;
+    transition: 0.3s ease all;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.4px;
+    color: #49454f;
+    padding: 0px 5px;
+}
+
+.user-input-wrp input:not(:placeholder-shown)~.floating-label,
+.user-input-wrp input:focus~.floating-label {
+  bottom: 87%;
+  left: 10px;
+  font-size: 13px;
+  opacity: 1;
+  font-weight: lighter;
+  /* background: #eff0f7; */
+  background: inherit;
+  padding: 0px 5px;
+  /* color: #c57c49; */
+}
