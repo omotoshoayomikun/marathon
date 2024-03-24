@@ -23,6 +23,8 @@ function AddRoom() {
         roomNum: []
     })
 
+    const [roomNumValue, setRoomNumValue] = useState('')
+
     const inputs = [
         {
             id: 1,
@@ -76,6 +78,15 @@ function AddRoom() {
         })
     }
 
+    const handleAddRoomNum = () => {
+        if (roomNumValue !== '') {
+            values.roomNum.push({ roomNum: roomNumValue, unavailableDates: [] })
+            setValues({ ...values })
+            setRoomNumValue('')
+        }
+    }
+
+console.log(values)
 
     return (
         <div className="p-[30px] pt-10 w-full">
@@ -127,17 +138,25 @@ function AddRoom() {
                     <div style={{ marginBottom: '25px' }}>
                         <div className='font-bold mb-4'>Add Room Number</div>
                         <div>
-                            <input type="text" className='border' />
-                            <button className='bg-slate-400 p-1 ml-4 rounded-lg' >Add</button>
+                            <input type="text" className='border w-[100px] h-[34px]' value={roomNumValue} onChange={(e) => setRoomNumValue(e.target.value)} />
+                            <Button text='Add' styles={{ padding: '8px' }} handleClick={handleAddRoomNum} />
                         </div>
                         {
                             values.roomNum.length > 0 && (
                                 <div className='mt-5 flex'>
                                     <div className='font-bold mr-3'>Room Number Added: </div>
-                                    <div>
+                                    <div className=' flex gap-2'>
                                         {
-                                            values.amenities.map(amenity => (
-                                                <span key={amenity.id}>{amenity.name}, </span>
+                                            values.roomNum.map((roomNum, i) => (
+                                                <div key={i} className='relative'>
+                                                    <div className=' bg-gray-300 p-[10px]'>{roomNum.roomNum} </div>
+                                                    <span
+                                                        onClick={() => setValues({...values, roomNum: values.roomNum.filter((num) => num !== roomNum)})}
+                                                        className='absolute top-[-8px] right-0 w-[20px] h-[20px] flex justify-center items-center bg-red-700 rounded-full text-white cursor-pointer'
+                                                        > 
+                                                        x
+                                                    </span>
+                                                </div>
                                             ))
                                         }
                                     </div>

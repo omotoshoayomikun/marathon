@@ -7,8 +7,6 @@ function ImageComponent({ data }) {
         return URL.createObjectURL(file)
     }
 
-    console.log(data.images)
-
     return (
         <>
             {
